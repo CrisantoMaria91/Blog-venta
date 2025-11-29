@@ -241,6 +241,19 @@ body {
   background-color: #9c6a74;
   transform: scale(1.2);
 }
+.error-mensaje {
+  color: #d9534f;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  display: block;
+  font-weight: 600;
+}
+
+.error-text {
+  min-height: 18px;
+  display: block;
+}
+
 .footer-contacto {
   background-color: #6e6765;
   margin-top: 250px;

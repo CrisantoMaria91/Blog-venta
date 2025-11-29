@@ -105,15 +105,18 @@
 
       <section class="formulario-contacto">
         <div class="contenedor-form">
-          <form action="enviarConsulta.php" method="POST">
+          <form action="enviarConsulta.php" method="POST" novalidate>
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required />
+            <small class="error-text"></small>
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required />
+            <small class="error-text"></small>
 
             <label for="mensaje">Mensaje:</label>
             <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+            <small class="error-text"></small>
 
             <div class="contenedor-botones">
               <button type="submit" class="boton-form">Enviar mensaje</button>
