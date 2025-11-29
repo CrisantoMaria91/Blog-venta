@@ -288,14 +288,19 @@ body {
 /* PRODUCTOS (CARDS + SLIDER)*/
 
 .card-list .card-item {
-  background: #a28d8a;
   border-radius: 18px;
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: 0.3s ease;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); */
+
+  height: 400px;
+  width: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  justify-content: space-between;
 }
 
 .card-list .card-item:hover {
@@ -316,24 +321,29 @@ body {
 .card-list .card-item .produc {
   font-size: 2rem;
   font-weight: 900;
-  color: #fff7f5;
-  margin: 5px;
+  /* color: #fff7f5; */
+  color: white;
+  margin: 0;
+  text-shadow: 1px 1px 2px black;
 }
 
 /* PRECIO */
 
 .card-list .card-item .price {
   font-size: 1.6rem;
-  color: #fff7f5;
+  color: white;
   font-weight: 700;
   margin: 5px;
+  text-align: center;
+
+  text-shadow: 1px 1px 2px black;
 }
 
 /* BOTÓN */
 
 .card-list .card-item .add-to-cart {
   padding: 10px 15px;
-  border-radius: 5px;
+  border-radius: 18px;
   background-color: #b9808a;
   color: #fff7f5;
   font-weight: 700;
@@ -506,7 +516,7 @@ body {
 }
 /* AJUSTE DE TAMAÑO DE CARD E IMAGEN */
 .card-list .card-item {
-  padding: 10px 0 10px 0 !important;
+  padding: 10px 0 20px 0 !important;
 }
 
 .card-list .card-item .prod-img {
