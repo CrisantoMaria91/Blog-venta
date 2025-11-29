@@ -93,8 +93,8 @@ body {
   height: 12px;
   background-color: #ff4b4b;
   border-radius: 50%;
-  border: 2px solid #fff7f5; /* borde pastel para que quede suave */
-  display: none; /* aparece cuando se agrega un producto */
+  border: 2px solid #fff7f5;
+  display: none;
 }
 
 /* MODAL DE CARRITO */
@@ -272,6 +272,8 @@ body {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
 }
 
+/* PRODUCTOS */
+
 #productos {
   scroll-margin-top: 120px;
   margin-bottom: 20px;
@@ -289,13 +291,13 @@ body {
 
 .card-list .card-item {
   border-radius: 18px;
-  padding: 30px 20px;
+  padding: 8px 0 20px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: 0.3s ease;
-  /* box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); */
-
+  position: relative;
+  z-index: 1;
   height: 400px;
   width: 150px;
   background-size: cover;
@@ -307,12 +309,13 @@ body {
   transform: translateY(-10px);
 }
 
+/* IMAGEN DENTRO DE LA CARD */
+
 .card-list .card-item .prod-img {
   height: 260px;
   object-fit: cover;
   border-radius: 14%;
   margin: 10px 0;
-
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
 }
 
@@ -350,12 +353,33 @@ body {
   cursor: pointer;
   transition: 0.2s ease;
   border: none;
+  position: relative;
+  z-index: 5;
 }
 
 .card-list .card-item .add-to-cart:hover {
   background-color: #9c6a74;
   transform: scale(1.2);
 }
+/* Capa para la imagen de fondo SIN recibir clics */
+.card-item .bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 18px;
+  z-index: 0;
+  pointer-events: none; /* Importante: evita clicks fantasma */
+}
+
+/* Todo el contenido encima de la imagen */
+.card-item > *:not(.bg) {
+  position: relative;
+  z-index: 2;
+}
+
+/* SWIPER */
 
 .swiper-pagination-bullet {
   background: #94807d;
@@ -460,11 +484,6 @@ body {
   align-items: center;
 }
 
-.iconos-footer {
-  gap: 25px;
-  display: flex;
-}
-
 /* ÍCONOS DEL FOOTER */
 .iconos-footer {
   display: flex;
@@ -513,13 +532,4 @@ body {
   .menu-icono {
     order: 0;
   }
-}
-/* AJUSTE DE TAMAÑO DE CARD E IMAGEN */
-.card-list .card-item {
-  padding: 10px 0 20px 0 !important;
-}
-
-.card-list .card-item .prod-img {
-  height: 300px !important;
-  object-fit: contain !important;
 }

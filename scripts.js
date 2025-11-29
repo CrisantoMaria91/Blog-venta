@@ -7,6 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
       loop: true,
       grabCursor: true,
       spaceBetween: 5,
+
+      // 🔥 elimina clicks fantasma
+      preventClicks: true,
+      preventClicksPropagation: true,
+      touchStartPreventDefault: false,
+      allowTouchMove: true,
+
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
@@ -57,37 +64,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (carrito.length > 0) mostrarNotificacionCarrito();
 
-  const botonesAgregar = document.querySelectorAll(".add-to-cart");
+  // ---------------------------------------------
+  // BOTONES "AGREGAR AL CARRITO" (EVENTO CORRECTO)
+  // ---------------------------------------------
+  document.querySelectorAll(".add-to-cart").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); // evita click fantasma del slider
 
-  if (botonesAgregar.length > 0) {
-    botonesAgregar.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        btn.classList.add("boton-cargando");
-        btn.textContent = "";
+      btn.classList.add("boton-cargando");
+      btn.textContent = "";
 
-        setTimeout(() => {
-          btn.classList.remove("boton-cargando");
-          btn.textContent = "AGREGAR AL CARRITO";
+      setTimeout(() => {
+        btn.classList.remove("boton-cargando");
+        btn.textContent = "AGREGAR AL CARRITO";
 
-          const card = btn.closest(".card-item");
-          const nombre = card.querySelector(".produc").textContent;
+        const card = btn.closest(".card-item");
+        const nombre = card.querySelector(".produc").textContent;
 
-          const precioTexto = card.querySelector(".price").textContent;
-          const precio = parseInt(
-            precioTexto.replace("$", "").replace(/\./g, "")
-          );
+        const precioTexto = card.querySelector(".price").textContent;
+        const precio = parseInt(
+          precioTexto.replace("$", "").replace(/\./g, "")
+        );
 
-          const existe = carrito.find((item) => item.nombre === nombre);
+        const existe = carrito.find((item) => item.nombre === nombre);
 
-          if (existe) existe.cantidad++;
-          else carrito.push({ nombre, precio, cantidad: 1 });
+        if (existe) existe.cantidad++;
+        else carrito.push({ nombre, precio, cantidad: 1 });
 
-          actualizarCarrito();
-          mostrarNotificacionCarrito();
-        }, 500);
-      });
+        actualizarCarrito();
+        mostrarNotificacionCarrito();
+      }, 500);
     });
-  }
+  });
 
   // ---------------------------------------------
   // Actualizar carrito
@@ -99,6 +107,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (carrito.length === 0) {
       carritoItems.innerHTML = `<p class="carrito-vacio">Tu carrito está vacío por ahora.</p>`;
       document.getElementById("carrito-total-precio").textContent = "$0";
+
+      // 🔥 CORRECCIÓN: guardar carrito vacío
+      localStorage.setItem("carrito", JSON.stringify([]));
+
       ocultarNotificacionCarrito();
       return;
     }
@@ -149,18 +161,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const nombre = document.getElementById("nombre");
     const email = document.getElementById("email");
     const mensaje = document.getElementById("mensaje");
+    const soloLetras = /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/;
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
       let valido = true;
 
-      document.querySelectorAll(".error-text").forEach((small) => {
-        small.textContent = "";
-        small.classList.remove("error-mensaje");
+      document.querySelectorAll(".error-text").forEach((s) => {
+        s.textContent = "";
+        s.classList.remove("error-mensaje");
       });
 
-      // Validación campos vacíos
+      // Reglas
       if (nombre.value.trim() === "") {
         nombre.nextElementSibling.textContent = "El nombre es obligatorio";
         nombre.nextElementSibling.classList.add("error-mensaje");
@@ -180,8 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
         valido = false;
       }
 
-      // Validación solo letras
-      const soloLetras = /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/;
       if (nombre.value.trim() !== "" && !soloLetras.test(nombre.value.trim())) {
         nombre.nextElementSibling.textContent =
           "El nombre solo puede contener letras";
@@ -189,10 +200,8 @@ document.addEventListener("DOMContentLoaded", () => {
         valido = false;
       }
 
-      // Validación email debe contener @
       if (email.value.trim() !== "" && !email.value.includes("@")) {
-        email.nextElementSibling.textContent =
-          "El email debe contener '@' (formato inválido)";
+        email.nextElementSibling.textContent = "El email debe contener '@'";
         email.nextElementSibling.classList.add("error-mensaje");
         valido = false;
       }
@@ -203,28 +212,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // -----------------------------
-    // VALIDACIONES EN VIVO
-    // -----------------------------
-
-    // Quitar error cuando escribe algo
-    function activarValidacionEnVivo(idCampo) {
-      const campo = document.getElementById(idCampo);
-      const error = campo.nextElementSibling;
-
+    // Validaciones en vivo
+    ["nombre", "email", "mensaje"].forEach((id) => {
+      const campo = document.getElementById(id);
       campo.addEventListener("input", () => {
-        if (campo.value.trim() !== "") {
-          error.textContent = "";
-          error.classList.remove("error-mensaje");
-        }
+        campo.nextElementSibling.textContent = "";
+        campo.nextElementSibling.classList.remove("error-mensaje");
       });
-    }
+    });
 
-    activarValidacionEnVivo("nombre");
-    activarValidacionEnVivo("email");
-    activarValidacionEnVivo("mensaje");
-
-    // Validación en vivo del nombre solo letras
     nombre.addEventListener("input", () => {
       if (soloLetras.test(nombre.value.trim())) {
         nombre.nextElementSibling.textContent = "";
@@ -232,7 +228,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Validación en vivo del email (agregar @)
     email.addEventListener("input", () => {
       if (email.value.includes("@")) {
         email.nextElementSibling.textContent = "";
