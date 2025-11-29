@@ -1,77 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pequeñitos</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-    
-</head>
-<body>
-    <header>
-        <span class="material-symbols-outlined menu-icono">menu</span>
-        <h1 id="titulo">Pequeñitos</h1>
-        <span class="material-symbols-outlined carrito-icono">shopping_cart</span>
-        
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ICONOS-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+
+    <!-- SWIPER CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="navbar-left">
+        <h1 class="logo-text">Pequeñitos</h1>
+      </div>
+      <!-- MENU DESKTOP -->
+      <nav class="nav-desktop">
+        <a href="index.html">HOME</a>
+        <a href="index.html#productos">CATALOGO</a>
+
+        <a href="contacto.html">CONTACTO</a>
+      </nav>
+
+      <!-- ICONO CARRITO -->
+      <div class="carrito-wrapper">
+        <span class="material-symbols-outlined carrito-icono"
+          >shopping_cart</span
+        >
+        <span id="carrito-notificacion" class="carrito-notificacion"></span>
+      </div>
     </header>
-    
-    <section class="Presentacion">
-        <h2>Bienvenidos a Pequeñitos</h2>
-        <p>En nuestra tienda encontrarás una variedad de productos adorables y únicos para los más pequeños de la casa. Desde tiernos peluches hasta juguetes educativos, cada artículo está diseñado con amor y cuidado para brindar alegría y diversión a los niños.</p>
-        <p>Explora nuestra colección y descubre el regalo perfecto para esa ocasión especial o simplemente para hacer sonreír a un niño. ¡Gracias por visitarnos!</p>
-    </section>
-        
-    <section class="Productos">
-        <article>
-            <img src="imagenes/ConejitoEnterito.jpg"alt="">
-            <h2>Conejito Lucas</h2>
-            <p>$29.000</p>
-            <button type="button">AGREGAR AL CARRITO</button>
-        </article>
-         <article>
-            <img src="imagenes/Osote.webp"alt="">
-            <h2>Osote</h2>
-            <P>$58.000</P>
-            <button type="button">AGREGAR AL CARRITO</button>
-        </article>
-        <article>
-            <img src="imagenes/sonajeroMee.webp"alt="">
-            <h2>Sonajero Mee</h2>
-            <p>$18.000</p>
-            <button type="button">AGREGAR AL CARRITO</button>
-        </article>
-        <article>
-            <img src="imagenes/ConejitaBailarina.jpeg"alt="">
-            <h2>Coneja Bailarina</h2>
-            <p>$29.000</p>
-            <button type="button">AGREGAR AL CARRITO</button>
-        </article>
-        <article>
-            <img src="imagenes/Cebritas.webp"alt="">
-            <h2>Cebritas</h2>
-            <p>$79.000</p>
-            <button type="button">AGREGAR AL CARRITO</button>
-        </article>
-        <article>
-            <img src="imagenes/CortineroConejo.webp"alt="">
-            <h2>Cortinero Conejo</h2>
-            <p>$32.000</p>
-            <button type="button">AGREGAR AL CARRITO</button>
-        </article>
-    </section>
-    <footer>
-        <section class="Volver">
-        <a href="#titulo">Volver al inicio</a>
-        </section>
-        <p>
-            Copyright - 2025. Todos los derechos reservados.
+
+    <!-- MODAL CARRITO -->
+    <div id="modal-carrito" class="modal-carrito">
+      <div class="modal-contenido">
+        <span class="cerrar-modal">&times;</span>
+        <h2>Tu carrito 🧺</h2>
+
+        <!-- LISTADO DE PRODUCTOS -->
+        <div id="carrito-items" class="carrito-items">
+          <p class="carrito-vacio">Tu carrito está vacío por ahora.</p>
+        </div>
+
+        <!-- TOTAL -->
+        <div class="carrito-total">
+          <span>Total:</span>
+          <span id="carrito-total-precio">$0</span>
+        </div>
+
+        <button class="cerrar-btn">Cerrar</button>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-contenido">
+        <p class="lead">
+          Amigurumis únicos, hechos a mano con materiales de primera calidad.
         </p>
+      </div>
+    </section>
+    <section class="bienvenida">
+      <p>
+        Bienvenidos a nuestra tiendita, donde cada amigurumi está tejido con
+        amor, dedicación y mucha ternura. Creamos piezas únicas para acompañar
+        momentos especiales de los más pequeños.
+      </p>
+    </section>
+    <section id="productos">
+      <h2 class="productos-titulo">Productos</h2>
+    </section>
+    <!-- CATÁLOGO -->
+    <div class="container swiper" id="product-slider">
+      <div class="slider-wrapper">
+        <div class="card-list swiper-wrapper">
+          <div class="card-item swiper-slide">
+            <div class="img-box">
+              <img src="imagenes/ConejitoEnterito.jpg" class="prod-img" />
+            </div>
+            <h2 class="produc">Conejito Lucas</h2>
+            <p class="price">$29.000</p>
+            <button class="add-to-cart">AGREGAR AL CARRITO</button>
+          </div>
+
+          <div class="card-item swiper-slide">
+            <div class="img-box">
+              <img src="imagenes/Osote.webp" class="prod-img" />
+            </div>
+            <h2 class="produc">Osote</h2>
+            <p class="price">$58.000</p>
+            <button class="add-to-cart">AGREGAR AL CARRITO</button>
+          </div>
+
+          <div class="card-item swiper-slide">
+            <div class="img-box">
+              <img src="imagenes/sonajeroMee.webp" class="prod-img" />
+            </div>
+            <h2 class="produc">Sonajero Mee</h2>
+            <p class="price">$18.000</p>
+            <button class="add-to-cart">AGREGAR AL CARRITO</button>
+          </div>
+
+          <div class="card-item swiper-slide">
+            <div class="img-box">
+              <img src="imagenes/ConejitaBailarina.jpeg" class="prod-img" />
+            </div>
+            <h2 class="produc">Conejita Bailarina</h2>
+            <p class="price">$29.000</p>
+            <button class="add-to-cart">AGREGAR AL CARRITO</button>
+          </div>
+
+          <div class="card-item swiper-slide">
+            <div class="img-box">
+              <img src="imagenes/Cebritas.webp" class="prod-img" />
+            </div>
+            <h2 class="produc">Cebritas</h2>
+            <p class="price">$79.000</p>
+            <button class="add-to-cart">AGREGAR AL CARRITO</button>
+          </div>
+
+          <div class="card-item swiper-slide">
+            <div class="img-box">
+              <img src="imagenes/CortineroConejo.webp" class="prod-img" />
+            </div>
+            <h2 class="produc">Cortinero Conejo</h2>
+            <p class="price">$32.000</p>
+            <button class="add-to-cart">AGREGAR AL CARRITO</button>
+          </div>
+        </div>
+
+        <!-- controles -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-slide-button swiper-button-prev"></div>
+        <div class="swiper-slide-button swiper-button-next"></div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-inicio">
+      <div class="iconos-footer">
+        <a href="https://facebook.com" target="_blank">
+          <img src="iconos/Facebook.svg" class="icono-red" />
+        </a>
+        <a href="https://instagram.com" target="_blank">
+          <img src="iconos/Instagram.svg" class="icono-red" />
+        </a>
+        <a href="https://wa.me/54911LOQUESEA" target="_blank">
+          <img src="iconos/Whatsapp.svg" class="icono-red" />
+        </a>
+      </div>
+      <div class="footer-copy">
+        <p>© 2025 Pequeñitos. Todos los derechos reservados.</p>
+      </div>
     </footer>
-</body>
+
+    <!-- SWIPER JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- SWIPER JS -->
+
+    <script src="scripts.js"></script>
+  </body>
 </html>
-
-

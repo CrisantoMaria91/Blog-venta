@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto - Pequeñitos</title>
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- ICONOS-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+
+    <!-- SWIPER CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="contacto.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="navbar-left">
+        <h1 class="logo-text">Pequeñitos</h1>
+      </div>
+      <!-- MENU DESKTOP -->
+      <nav class="nav-desktop">
+        <a href="index.html">HOME</a>
+        <a href="index.html#productos">CATALOGO</a>
+      </nav>
+
+      <!-- ICONO CARRITO -->
+      <div class="carrito-wrapper">
+        <span class="material-symbols-outlined carrito-icono"
+          >shopping_cart</span
+        >
+        <span id="carrito-notificacion" class="carrito-notificacion"></span>
+      </div>
+    </header>
+
+    <!-- MODAL CARRITO -->
+    <div id="modal-carrito" class="modal-carrito">
+      <div class="modal-contenido">
+        <span class="cerrar-modal">&times;</span>
+        <h2>Tu carrito 🧺</h2>
+
+        <!-- LISTADO DE PRODUCTOS -->
+        <div id="carrito-items" class="carrito-items">
+          <p class="carrito-vacio">Tu carrito está vacío por ahora.</p>
+        </div>
+
+        <!-- TOTAL -->
+        <div class="carrito-total">
+          <span>Total:</span>
+          <span id="carrito-total-precio">$0</span>
+        </div>
+
+        <button class="cerrar-btn">Cerrar</button>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero-consulta">
+      <h1>¿Tenés alguna consulta?</h1>
+      <h2>Estamos acá para ayudarte</h2>
+    </section>
+
+    <!-- CONTENIDO Y FORMULARIO -->
+    <section class="consulta-wrapper">
+      <div class="consulta-texto">
+        <h2 class="consulta-pregunta">Dejanos tu pregunta</h2>
+        <p>
+          No dudes en llenar el cuestionario si querés dejarnos alguna consulta
+          y te responderemos a la brevedad!
+        </p>
+        <p>También podés seguirnos por:</p>
+        <div class="consulta-iconos">
+          <a href="https://facebook.com" target="_blank">
+            <img src="iconos/Facebook.svg" />
+          </a>
+
+          <a href="https://instagram.com" target="_blank">
+            <img src="iconos/Instagram.svg" " />
+          </a>
+
+          <a href="https://wa.me/54911LOQUESEA" target="_blank">
+            <img src="iconos/Whatsapp.svg" />
+          </a>
+        </div>
+      </div>
+
+      <section class="formulario-contacto">
+        <div class="contenedor-form">
+          <form action="enviarConsulta.php" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+            <div class="contenedor-botones">
+              <button type="submit" class="boton-form">Enviar mensaje</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </section>
+
+    <footer class="footer-contacto">
+      <div class="copy">
+        <p>© 2025 Pequeñitos. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+    <script src="scripts.js"></script>
+  </body>
+</html>
