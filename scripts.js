@@ -235,4 +235,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-});
+
+  // ---------------------------------------------
+  // MENU MOBILE
+  // ---------------------------------------------
+  const menuIcono = document.querySelector(".menu-icono");
+  const navMobile = document.getElementById("nav-mobile");
+
+  if (menuIcono) {
+    menuIcono.addEventListener("click", () => {
+      navMobile.style.display =
+        navMobile.style.display === "flex" ? "none" : "flex";
+    });
+  }
+}); // ← ESTE es el cierre del DOMContentLoaded

@@ -293,3 +293,184 @@ body {
     text-align: center;
   }
 }
+/* RESPONSIVE CONTACTO */
+@media (max-width: 768px) {
+  .contacto-section {
+    padding: 1.2rem;
+  }
+
+  .contacto-texto {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .formulario-contacto .contenedor-form {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .formulario-contacto form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .formulario-contacto input,
+  .formulario-contacto textarea {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .contenedor-botones {
+    display: flex;
+    justify-content: center;
+  }
+
+  .boton-form {
+    width: 70%;
+    font-size: 1rem;
+  }
+}
+/* =====================================
+   APILAR TEXTO + FORMULARIO EN MOBILE
+   ===================================== */
+
+@media (max-width: 768px) {
+  /* Contenedor principal → se apila */
+  .consulta-wrapper {
+    display: flex;
+    flex-direction: column; /* APILADO */
+    align-items: center;
+    gap: 35px; /* separación entre texto y form */
+    padding: 0 20px;
+  }
+
+  /* Texto arriba */
+  .consulta-texto {
+    width: 100%;
+    text-align: center;
+  }
+
+  .consulta-texto p {
+    text-align: center;
+  }
+
+  /* Iconos centrados */
+  .consulta-iconos {
+    justify-content: center;
+    gap: 25px;
+    margin: 15px auto;
+  }
+
+  /* Formulario abajo */
+  .formulario-contacto {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .contenedor-form {
+    width: 100%;
+    max-width: 420px; /* para que no quede demasiado ancho */
+  }
+
+  .contenedor-form input,
+  .contenedor-form textarea {
+    width: 100%;
+  }
+
+  .contenedor-botones {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* =====================================
+   APILAR TEXTO + FORMULARIO EN TABLET & MOBILE
+   ===================================== */
+
+@media (max-width: 900px) {
+  .consulta-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    padding: 0 20px;
+  }
+
+  /* Texto centrado */
+  .consulta-texto {
+    width: 100%;
+    text-align: center;
+  }
+
+  .consulta-texto p {
+    text-align: center;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+
+  /* Iconos centrados */
+  .consulta-iconos {
+    justify-content: center;
+    gap: 25px;
+    margin: 15px auto;
+  }
+
+  /* Formulario */
+  .formulario-contacto {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .contenedor-form {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .contenedor-form input,
+  .contenedor-form textarea {
+    width: 100%;
+  }
+
+  .contenedor-botones {
+    display: flex;
+    justify-content: center;
+  }
+}
+/* =====================================
+   ESPACIADO LATERAL PARA TABLETS GRANDES
+   (Ej: Nest Hub 1024px de ancho)
+   ===================================== */
+
+@media (max-width: 1200px) and (min-width: 901px) {
+  .consulta-wrapper {
+    padding: 0 40px; /* margen suave */
+  }
+
+  .consulta-texto {
+    padding-left: 20px; /* evita que se pegue al borde */
+  }
+
+  .consulta-texto h2,
+  .consulta-texto p {
+    text-align: left; /* mantiene lectura natural */
+  }
+
+  .consulta-iconos {
+    margin-left: 15px;
+  }
+}
+/* Ajuste para resoluciones alrededor de 1280px */
+@media (min-width: 1100px) and (max-width: 1400px) {
+  .consulta-wrapper {
+    padding: 0 80px; /* agrega margen a los bordes */
+  }
+
+  .consulta-texto {
+    padding-left: 40px; /* separa más el texto del borde */
+  }
+}
