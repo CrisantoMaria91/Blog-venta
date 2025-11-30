@@ -612,3 +612,23 @@ body {
     right: -3px;
   }
 }
+/* MENÚ MOBILE */
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+    flex-direction: column;
+    gap: 1.2rem;
+    background: #fff7f5;
+    padding: 1.5rem;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    border-radius: 12px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+    z-index: 2000;
+  }
+
+  .nav-desktop.nav-activo {
+    display: flex;
+  }
+}

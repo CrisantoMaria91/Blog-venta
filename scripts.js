@@ -237,15 +237,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ---------------------------------------------
-  // MENU MOBILE
+  // MENÚ HAMBURGUESA UNIVERSAL (funciona en todas las páginas)
   // ---------------------------------------------
   const menuIcono = document.querySelector(".menu-icono");
-  const navMobile = document.getElementById("nav-mobile");
+  const navDesktop = document.querySelector(".nav-desktop");
 
-  if (menuIcono) {
-    menuIcono.addEventListener("click", () => {
-      navMobile.style.display =
-        navMobile.style.display === "flex" ? "none" : "flex";
+  if (menuIcono && navDesktop) {
+    menuIcono.addEventListener("click", (e) => {
+      e.stopPropagation(); // evita conflictos con otros eventos
+      navDesktop.classList.toggle("nav-activo");
+    });
+
+    // Cerrar menú al hacer click afuera
+    document.addEventListener("click", (e) => {
+      if (!navDesktop.contains(e.target) && !menuIcono.contains(e.target)) {
+        navDesktop.classList.remove("nav-activo");
+      }
+    });
+
+    // Cerrar menú cuando se hace click en una opción
+    navDesktop.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navDesktop.classList.remove("nav-activo");
+      });
     });
   }
-}); // ← ESTE es el cierre del DOMContentLoaded
+});
